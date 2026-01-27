@@ -11,7 +11,7 @@
 	<groupId>com.weather</groupId>
 	<artifactId>temperature</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>temperature</name>
 	<description>Weather app for capture current temperature</description>
 	<url/>
@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+<!--            <scope>provided</scope>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
