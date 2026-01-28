@@ -31,11 +31,13 @@ public class WeatherService {
             //String valor = String.format(Locale.US,"%.1f", temperaturaAire) + "°";
             String valor;
 
-            if (temperaturaAire % 1 == 0) {
+            valor = String.format(Locale.US, "%.1f", temperaturaAire) + "°";
+
+            /*if (temperaturaAire % 1 == 0) {
                 valor = String.format(Locale.US, "%.0f", temperaturaAire) + "°";
             } else {
                 valor = String.format(Locale.US, "%.1f", temperaturaAire) + "°";
-            }
+            }*/
 
             Temperature temperature = new Temperature(valor);
             temperatureCache.put(codigo, temperature);
