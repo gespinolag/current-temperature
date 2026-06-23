@@ -7,7 +7,6 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -45,8 +44,9 @@ public class WeatherService {
             TemperatureDTO temperature = new TemperatureDTO(valor);
             temperatureCache.put(codigo, temperature);
 
-        } catch (IOException e) {
-            return null;
+        } catch (Exception e) {
+            System.out.println("No se pudo actualizar la temperatura para código " + codigo + ". Se usará caché si existe.");
+            return temperatureCache.get(codigo);
         }
         return temperatureCache.get(codigo);
     }

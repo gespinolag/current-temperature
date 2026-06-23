@@ -7,8 +7,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Configuration
 @EnableScheduling
@@ -20,12 +20,12 @@ public class SchedulerConfig {
     // 15 minutes is 900000 milliseconds
     // 30 minutes is 1800000 milliseconds
 
-    @Scheduled(fixedRate = 1800000)
+    @Scheduled(fixedRate = 900000)
     public void fetchTemperatureAtInterval() {
         for (String code : weatherService.getAllCachedCodes()) {
             weatherService.fetchTemperature(code);
-            String currentTime = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-            System.out.println("Current temperature updated! | time = " + currentTime);
+            String currentTime = LocalDateTime.now(ZoneId.of("America/Asuncion")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+            System.out.println("Current temperature updated! | Local time = " + currentTime + " | Current temperature is = " + weatherService.fetchTemperature(code).getTemperature() + "C");
         }
     }
 }
