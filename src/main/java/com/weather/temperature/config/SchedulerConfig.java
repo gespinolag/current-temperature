@@ -20,7 +20,7 @@ public class SchedulerConfig {
     // 15 minutes is 900000 milliseconds
     // 30 minutes is 1800000 milliseconds
 
-    @Scheduled(fixedRate = 900000)
+    @Scheduled(fixedRate = 1800000)
     public void fetchTemperatureAtInterval() {
         for (String code : weatherService.getAllCachedCodes()) {
             weatherService.fetchTemperature(code);
